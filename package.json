@@ -1,0 +1,10 @@
+{
+    "name": "test-color-theme",
+    "version": "2.1.1",
+    "publisher": "ShaidK-Test",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "license": "SEE LICENSE IN LICENSE",
+    "displayName": "Test"
+}
