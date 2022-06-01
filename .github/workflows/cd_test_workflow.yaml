@@ -18,19 +18,19 @@ jobs:
       with:
         node-version: 16.x
 
-    - name: get-npm-version
+    - name: Obtain NPM Version
       id: version
       uses: martinbeentjes/npm-get-version-action@main
 
-    - name: Bump version and push tag
+    - name: Integrate Tag
       id: tag_version
       uses: mathieudutour/github-tag-action@v6.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         custom_tag: ${{ steps.version.outputs.current-version}}
         
-    - name: Create a GitHub release
+    - name: Build Release
       uses: ncipollo/release-action@v1
       with:
         tag: ${{ steps.tag_version.outputs.new_tag }}
-        name: Release ${{ steps.tag_version.outputs.new_tag }}
+        # artifacts
