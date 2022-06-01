@@ -18,21 +18,16 @@ jobs:
       with:
         node-version: 16.x
 
-    - name: "Automated Version Bump"
-      uses: "phips28/gh-action-bump-version@master"
-      with:
-        tag-prefix: ''
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: get-npm-version
+      id: version
+      uses: martinbeentjes/npm-get-version-action@main
 
-    #- name: Bump version and push tag
-     # id: tag_version
-      #uses: mathieudutour/github-tag-action@v6.0
-      #with:
-      #  github_token: ${{ secrets.GITHUB_TOKEN }}
-       # custom_tag: 2.1.1
-        #tag_prefix: V
-        # default_bump: minor
+    - name: Bump version and push tag
+      id: tag_version
+      uses: mathieudutour/github-tag-action@v6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        custom_tag: ${{ steps.version.outputs.current-version}}
         
     - name: Create a GitHub release
       uses: ncipollo/release-action@v1
