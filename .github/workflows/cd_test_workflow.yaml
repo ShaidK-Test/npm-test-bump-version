@@ -32,5 +32,5 @@ jobs:
     - name: Build Release
       uses: ncipollo/release-action@v1
       with:
-        tag: ${{ '3.0.0' }}
+        tag: ${{ '3.1.0' }}
         # artifacts
